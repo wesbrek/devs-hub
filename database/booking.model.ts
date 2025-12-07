@@ -41,13 +41,9 @@ const BookingSchema = new Schema(
 BookingSchema.pre('save', async function (): Promise<void> {
   // Only validate eventId if it's new or modified
   if (this.isModified('eventId')) {
-    try {
-      const eventExists = await Event.findById(this.eventId);
-      if (!eventExists) {
-        throw new Error('Referenced event does not exist');
-      }
-    } catch (error) {
-      throw new Error('Error validating event reference');
+    const eventExists = await Event.findById(this.eventId);
+    if (!eventExists) {
+      throw new Error('Referenced event does not exist');
     }
   }
 });
