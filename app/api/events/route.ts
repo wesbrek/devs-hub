@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
 import { v2 as cloudinary } from 'cloudinary';
-import { Event } from '@/database';
+import connectDB from '@/lib/mongodb';
 import { handleApiError } from '@/lib/api-error-handler';
+import { Event } from '@/database';
 
 export async function POST(req: NextRequest) {
   try {
