@@ -144,9 +144,6 @@ EventSchema.pre('save', function (): void {
   }
 });
 
-// Create unique index on slug
-EventSchema.index({ slug: 1 }, { unique: true });
-
 // Export model with proper typing
 const Event: Model<IEvent> =
   mongoose.models.Event || mongoose.model<IEvent>('Event', EventSchema);
